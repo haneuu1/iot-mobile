@@ -1,4 +1,4 @@
 include ':app', ':MyLib'
 rootProject.name = "SmartDoor"
 
-project(':MyLib').projectDir = new File('C:\\Users\\haneuul\\iot-mobile\\MyLib')
+project(':MyLib').projectDir = new File('C:\\iot\\smartdoor\\iot-library\\MyLib')
