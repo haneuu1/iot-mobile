@@ -1,4 +1,4 @@
-include ':app', ':MyLib'
+//include ':app', ':MyLib'
 rootProject.name = "SmartDoor"
 
-project(':MyLib').projectDir = new File('C:\\iot\\smartdoor\\iot-library\\MyLib')
+//project(':MyLib').projectDir = new File('여기에 본인의 MyLib 넣어주시고 주석 풀어주세요 (위에것도)')
