@@ -14,10 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartDoor"
         android:usesCleartextTraffic="true">
-        <service android:name="org.eclipse.paho.android.service.MqttService" />
-        <activity android:name=".PicamNowActivity"></activity>
+        <activity android:name=".RangeDatePickerActivity"></activity>
+        <activity android:name=".DoorAccessRecordListActivity" />
+        <activity android:name=".VideoPlayActivity" />
 
-        <activity android:name=".SplashActivity"
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+
+        <activity android:name=".PicamNowActivity" />
+        <activity android:name=".VideoListActivity" />
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MainActivity" />
-
     </application>
 
 </manifest>

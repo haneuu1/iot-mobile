@@ -117,45 +117,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/btnSendNewSound"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:clickable="true"
-            app:cardBackgroundColor="#EFDD94"
-            app:cardCornerRadius="3dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="false"
-            app:contentPadding="10dp"
-            app:strokeColor="#000000"
-            app:strokeWidth="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_mic_24" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="새로운 음성 메세지 보내기"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

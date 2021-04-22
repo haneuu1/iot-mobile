@@ -20,8 +20,8 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 
 
 const val SUB_TOPIC = "iot/monitor/pir"
-const val PUB_TOPIC = "iot/control/camera/servo"
-const val SERVER_URI = "tcp://192.168.35.227:1883" // 본인의 피시 주소
+const val PUB_TOPIC = "iot/control/camera/servo/vertical"
+const val SERVER_URI = "tcp://172.30.1.33:1883" // 본인의 피시 주소
 
 class PicamNowActivity : AppCompatActivity() {
 
@@ -29,24 +29,15 @@ class PicamNowActivity : AppCompatActivity() {
     lateinit var binding : ActivityPicamNowBinding
 
 
+
     // notification channel 설정
     companion object {
-        const val CHANNEL_ID = "com.example.myproject"
+        const val CHANNEL_ID = "com.example.smartdoor"
         const val CHANNEL_NAME = "My Channel"
         const val CHANNEL_DESCRIPTION = "Channel Test"
         const val NOTIFICATION_REQUEST = 0
         const val NOTIFICATION_ID = 100
     }
-
-    // 음성 데이터 리스트 만듬
-//    val voices = mutableListOf<VoiceData>()
-//    init {
-//        voices += VoiceData("누구세요?")
-//        voices += VoiceData("가세요")
-//        voices += VoiceData("안사요")
-//        voices += VoiceData("없어요")
-//        voices += VoiceData("괜찮아요")
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,10 +59,11 @@ class PicamNowActivity : AppCompatActivity() {
             settings.javaScriptEnabled = true
         }
 
+
         // 주소에 본인의 라즈베리파이 주소로 바주세요
         picamView.loadData(
             "<html><head><style type='text/css'>body{margin:auto auto;text-align:center;} img{width:100%25;} div{overflow: hidden;} " +
-                    "</style></head><body><div><img src='http://192.168.35.41:8000/mjpeg/stream'/></div></body></html>" ,
+                    "</style></head><body><div><img src='http://172.30.1.126:8000/mjpeg/stream'/></div></body></html>" ,
             "text/html",  "UTF-8"
         )
 

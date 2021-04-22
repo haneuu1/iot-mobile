@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RangeDatePickerActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/calendar_departure_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:text="시작일"
+        android:textColor="#A0A0A4"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/calendar_departure_date"
+        app:layout_constraintEnd_toStartOf="@id/calendar_return_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/calendar_return_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="종료일"
+        android:textColor="#A0A0A4"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/calendar_departure_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/calendar_txtSearch"
+        app:layout_constraintStart_toEndOf="@id/calendar_departure_title"
+        app:layout_constraintTop_toTopOf="@id/calendar_departure_title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/calendar_txtSearch"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#A0A0A4"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/calendar_departure_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/calendar_return_title"
+        app:layout_constraintTop_toTopOf="@id/calendar_departure_title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/calendar_departure_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="#333333"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/calendar_return_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendar_departure_title" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/calendar_return_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="#333333"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/calendar_departure_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/calendar_btnSearch"
+        app:layout_constraintStart_toEndOf="@id/calendar_departure_date"
+        app:layout_constraintTop_toTopOf="@id/calendar_departure_date" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/calendar_btnSearch"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="검색"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/calendar_departure_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/calendar_return_date"
+        app:layout_constraintTop_toTopOf="@+id/calendar_departure_title" />
+
+    <com.andrewjapar.rangedatepicker.CalendarPicker
+        android:id="@+id/calendar_calendar_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:scrollbarStyle="outsideOverlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/calendar_shadow_overlay"
+        app:pickerType="range" />
+
+    <View
+        android:id="@+id/calendar_shadow_overlay"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shadow_overlay_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendar_departure_date" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        const val CHANNEL_ID = "com.example.myproject"
+        const val CHANNEL_ID = "com.example.smartdoor"
         const val CHANNEL_NAME = "My Channel"
         const val CHANNEL_DESCRIPTION = "Channel Test"
         const val NOTIFICATION_REQUEST = 0
@@ -25,5 +25,16 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this, PicamNowActivity::class.java)
             startActivity(i)
         }
+
+        card2.setOnClickListener {
+            val i = Intent(this, VideoListActivity::class.java)
+            startActivity(i)
+        }
+
+        card3.setOnClickListener {
+            val i = Intent(this, DoorAccessRecordListActivity::class.java)
+            startActivity(i)
+        }
+
     }
 }
