@@ -27,7 +27,8 @@ import com.google.android.exoplayer2.util.Util
 class VideoPlayActivity : AppCompatActivity() {
     val TAG = javaClass.simpleName
 
-    val baseUrl = "http://172.30.1.126:8000/media/"
+//    val baseUrl = "http://172.30.1.126:8000/media/"
+    val baseUrl = DJANGO_SERVER_URI + "/media/"
     lateinit var URL: String
 
     private lateinit var simpleExoPlayer: SimpleExoPlayer

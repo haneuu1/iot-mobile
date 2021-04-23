@@ -18,11 +18,6 @@ import kotlinx.android.synthetic.main.activity_picam_now.*
 import kotlinx.android.synthetic.main.input_new_voice.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
-
-const val SUB_TOPIC = "iot/monitor/pir"
-const val PUB_TOPIC = "iot/control/camera/servo/vertical"
-const val SERVER_URI = "tcp://172.30.1.33:1883" // 본인의 피시 주소
-
 class PicamNowActivity : AppCompatActivity() {
 
     lateinit var mqttClient: Mqtt
@@ -46,7 +41,7 @@ class PicamNowActivity : AppCompatActivity() {
         binding = ActivityPicamNowBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mqttClient = Mqtt(this, SERVER_URI)
+        mqttClient = Mqtt(this, MQTT_SERVER_URI)
         try {
             mqttClient.setCallback(::onReceived)
             mqttClient.connect(arrayOf<String>(SUB_TOPIC))
@@ -63,7 +58,7 @@ class PicamNowActivity : AppCompatActivity() {
         // 주소에 본인의 라즈베리파이 주소로 바주세요
         picamView.loadData(
             "<html><head><style type='text/css'>body{margin:auto auto;text-align:center;} img{width:100%25;} div{overflow: hidden;} " +
-                    "</style></head><body><div><img src='http://172.30.1.126:8000/mjpeg/stream'/></div></body></html>" ,
+                    "</style></head><body><div><img src='" + DJANGO_SERVER_URI + "/mjpeg/stream'/></div></body></html>" ,
             "text/html",  "UTF-8"
         )
 
@@ -98,6 +93,8 @@ class PicamNowActivity : AppCompatActivity() {
                     selectedItem = items[which]
                 }
 
+            builder.setNeutralButton("취소", null)
+
             builder.setPositiveButton("확인") { dialog, which ->
                     if (selectedItem.toString() == "직접 입력하기") {
 
@@ -115,6 +112,7 @@ class PicamNowActivity : AppCompatActivity() {
                                     mqttClient.publish("iot/control/voice", input.text.toString())
                                 }
                             }
+                            setNeutralButton("취소", null)
                             show()
                         }
 
