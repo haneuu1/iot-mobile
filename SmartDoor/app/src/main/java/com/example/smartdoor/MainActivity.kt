@@ -16,8 +16,8 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 
 const val SUB_TOPIC = "iot/monitor/pir"
 const val PUB_TOPIC = "iot/control/camera/servo/vertical"
-const val MQTT_SERVER_URI = "tcp://172.30.1.124:1883" // 본인의 피시 주소
-const val DJANGO_SERVER_URI = "http://172.30.1.44:8000" // 라즈베리파이 주소
+const val MQTT_SERVER_URI = "tcp://192.168.35.100:1883" // 본인의 피시 주소
+const val DJANGO_SERVER_URI = "http://192.168.35.225:8000" // 라즈베리파이 주소
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,6 +62,10 @@ class MainActivity : AppCompatActivity() {
             showSettingPopup()
         }
 
+        card5.setOnClickListener {
+            mqttClient.publish("iot/control/key/temp", "1234_20")
+        }
+
     }
 
     private fun showSettingPopup() {
@@ -74,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 .setTitle("스마트도어")
                 .setPositiveButton("확인") { dialog, which ->
                     toast("문이 열렸습니다.")
-                    mqttClient.publish("iot/control/key", "on")
+                    mqttClient.publish("iot/control/key", "app_on")
                 }
                 .setNeutralButton("취소", null)
                 .create()

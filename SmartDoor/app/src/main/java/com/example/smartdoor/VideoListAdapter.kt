@@ -14,7 +14,7 @@ class VideoListAdapter (val videoList: ArrayList<RecordingDataItem>, val onItemC
 
     inner class VideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //        val tvId = itemView.tv_video_id
-        val tvVideoroot = itemView.tv_video_videoroot
+        val tvVideoLength = itemView.tv_video_length
         val tvVideoTimestamp = itemView.tv_video_timestamp
 
         init {
@@ -40,7 +40,8 @@ class VideoListAdapter (val videoList: ArrayList<RecordingDataItem>, val onItemC
     override fun onBindViewHolder(holder: VideoListAdapter.VideoViewHolder, position: Int) {
         videoList[position].let { video ->
             with(holder) {
-                tvVideoroot.text = video.video_root
+                val splitLength = video.video_length.split(":")
+                tvVideoLength.text = "동영상 길이: " + splitLength[0] + "분 " + splitLength[1] + "초"
                 val simpleDate = SimpleDateFormat("yyyy년 MM월 dd일 HH:mm:ss").format(video.video_timestamp)
                 tvVideoTimestamp.text = simpleDate
 

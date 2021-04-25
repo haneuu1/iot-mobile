@@ -67,10 +67,24 @@ class PicamNowActivity : AppCompatActivity() {
         }
 
         // seekbar 의 값을 publish
-        seekAngle.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+        seekAngleVertical.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
 
                 mqttClient.publish(PUB_TOPIC, progress.toString())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+
+        })
+
+        seekAngleHorizontal.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+
+                mqttClient.publish("iot/control/camera/servo/horizontal", progress.toString())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -109,7 +123,7 @@ class PicamNowActivity : AppCompatActivity() {
                             setPositiveButton("확인") { dialog: DialogInterface?, which: Int ->
                                 if (input != null) {
 //                                    toast("${input.text.toString()}")
-                                    mqttClient.publish("iot/control/voice", input.text.toString())
+                                    mqttClient.publish("iot/control/voice", "가나다 " + input.text.toString())
                                 }
                             }
                             setNeutralButton("취소", null)
@@ -117,7 +131,7 @@ class PicamNowActivity : AppCompatActivity() {
                         }
 
                     } else {
-                        mqttClient.publish("iot/control/voice", selectedItem.toString())
+                        mqttClient.publish("iot/control/voice", "가나다 " + selectedItem.toString())
                     }
                 }
                 .show()
